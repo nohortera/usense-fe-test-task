@@ -1,0 +1,42 @@
+<form
+  class="bg-white shadow-sm container mx-auto mt-20 w-1/2 flex flex-col items-center justify-center border rounded p-[50px]"
+  [formGroup]="form"
+>
+  <input
+    type="text"
+    class="border rounded py-2 px-3 w-1/2 mb-2"
+    placeholder="Password"
+    formControlName="password"
+  >
+
+
+  <div
+    class="w-1/2 border-collapse flex"
+  >
+    <div
+      class="bg-gray-100 w-1/3 border h-[10px]"
+      [ngClass]="{
+        'bg-red-400': (_password.errors?.['minlength']
+        && (_password.touched || _password.dirty))
+        || _password.errors?.['passwordStrength']?.['easy'],
+        'bg-yellow-400': _password.errors?.['passwordStrength']?.['medium'],
+        'bg-green-400': _password.valid
+       }"
+    ></div>
+    <div
+      class="bg-gray-100 w-1/3 border h-[10px]"
+      [ngClass]="{
+        'bg-red-400': (_password.errors?.['minlength'] && (_password.touched || _password.dirty)),
+        'bg-yellow-400': _password.errors?.['passwordStrength']?.['medium'],
+        'bg-green-400': _password.valid
+       }"
+    ></div>
+    <div
+      class="bg-gray-100 w-1/3 border h-[10px]"
+      [ngClass]="{
+        'bg-red-400': (_password.errors?.['minlength'] && (_password.touched || _password.dirty)),
+        'bg-green-400': _password.valid
+       }"
+    ></div>
+  </div>
+</form>
